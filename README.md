@@ -4,7 +4,7 @@ ToDoApplication is an android app that allows building a todo list and basic tod
 
 Submitted by: Jacob Snyder
 
-Time spent: 2 hours spent in total
+Time spent: 3.5 hours spent in total
 
 ## User Stories
 
@@ -16,7 +16,7 @@ The following **required** functionality is completed:
 
 The following **optional** features are implemented:
 
-* [ ] User can **tap a todo item in the list and bring up an edit screen for the todo item** and then have any changes to the text reflected in the todo list
+* [x] User can **tap a todo item in the list and bring up an edit screen for the todo item** and then have any changes to the text reflected in the todo list
 
 The following **additional** features are implemented:
 
@@ -26,13 +26,13 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-![Walkthrough](ToDoAppGif.gif)
+![Walkthrough](ToDoAppGif2.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-No challenges were encountered while building this app. Everything went smoothly.
+Had issues aligning the "Save" button properly on the Edit screen. Had to find syntax to line up the top of the button with the bottom of the text field.
 
 ## License
 
