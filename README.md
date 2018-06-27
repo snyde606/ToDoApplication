@@ -4,7 +4,7 @@ ToDoApplication is an android app that allows building a todo list and basic tod
 
 Submitted by: Jacob Snyder
 
-Time spent: 1.5 hours spent in total
+Time spent: 2 hours spent in total
 
 ## User Stories
 
