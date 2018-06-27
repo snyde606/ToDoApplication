@@ -1,5 +1,6 @@
 package me.snyde606.todoapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -22,6 +23,10 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> items;
     ArrayAdapter<String> itemsAdapter;
     ListView lvItems;
+
+    public static final int EDIT_REQUEST_CODE = 20;
+    public static final String ITEM_TEXT = "itemText";
+    public static final String ITEM_POSITION = "itemPosition";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +65,16 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(MainActivity.this, EditItemActivity.class);
+                i.putExtra(ITEM_TEXT, items.get(position));
+                i.putExtra(ITEM_POSITION, position);
+                startActivityForResult(i, EDIT_REQUEST_CODE);
+            }
+        });
     }
 
     private File getDataFile(){
@@ -80,6 +95,19 @@ public class MainActivity extends AppCompatActivity {
             FileUtils.writeLines(getDataFile(), items);
         } catch(IOException e){
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == EDIT_REQUEST_CODE) {
+            String updatedItem = data.getExtras().getString(ITEM_TEXT);
+            int position = data.getExtras().getInt(ITEM_POSITION, 0);
+            items.set(position, updatedItem);
+            itemsAdapter.notifyDataSetChanged();
+            writeItems();
+            Toast.makeText(this, "Item updated", Toast.LENGTH_SHORT).show();
         }
     }
 
